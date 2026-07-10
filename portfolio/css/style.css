@@ -1,0 +1,151 @@
+/* ==========================================================================
+   Design tokens — cool teal-to-blue night, warm pale text
+   ========================================================================== */
+:root{
+  --bg-start: #062B2E;
+  --bg-end: #14506B;
+  --ink: #F1FBFA;
+  --mute: rgba(241,251,250,0.68);
+  --mute-soft: rgba(241,251,250,0.45);
+  --tile-bg: #ECFBFA;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+a{ color: inherit; }
+img{ max-width: 100%; display: block; }
+:focus-visible{ outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+.wrap{ max-width: 860px; margin: 0 auto; padding: 0 28px; }
+
+/* Inline links inside prose: bold + underline on hover, no separate accent color */
+.prose a{
+  font-weight: 700; text-decoration: none;
+  background-image: linear-gradient(var(--ink), var(--ink));
+  background-size: 0% 1.5px; background-repeat: no-repeat; background-position: 0 100%;
+  transition: background-size .18s ease;
+  padding-bottom: 2px;
+}
+.prose a:hover{ background-size: 100% 1.5px; }
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero{ padding: 96px 0 8px; }
+.hero > *{ animation: rise .6s cubic-bezier(.16,1,.3,1) both; }
+.hero > *:nth-child(2){ animation-delay: .05s; }
+@keyframes rise{
+  from{ opacity: 0; transform: translateY(10px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+.h1{
+  font-family: var(--font-display);
+  font-size: clamp(48px, 8vw, 92px);
+  line-height: 0.98; font-weight: 800; letter-spacing: -0.03em;
+  margin: 0 0 28px;
+}
+.bio{
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.6;
+  max-width: 62ch;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Section rhythm
+   ========================================================================== */
+.section{ padding: 44px 0; }
+.section-label{
+  font-size: 16px; margin: 0 0 22px; font-weight: 550;
+}
+
+/* ==========================================================================
+   Icon grid
+   ========================================================================== */
+.icon-grid{ display: flex; flex-wrap: wrap; gap: 18px; }
+.icon-tile{
+  width: 74px; height: 74px; border-radius: 18px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--tile-bg);
+  box-shadow: 0 6px 16px -6px rgba(0,0,0,0.45);
+  transition: transform .15s ease, box-shadow .15s ease;
+  position: relative;
+}
+.icon-tile img{ width: 100%; height: 100%; border-radius: 18px; object-fit: cover; }
+.icon-tile:hover{ transform: translateY(-3px); box-shadow: 0 12px 22px -8px rgba(0,0,0,0.5); }
+.icon-tile.placeholder{
+  background: transparent;
+  border: 1.5px dashed rgba(246,243,255,0.35);
+  box-shadow: none;
+  color: rgba(246,243,255,0.55);
+  font-size: 11px; font-weight: 600; text-align: center; line-height: 1.25; padding: 6px;
+  font-family: var(--font-mono);
+}
+.icon-tile.placeholder:hover{ transform: none; border-color: rgba(246,243,255,0.6); }
+
+/* ==========================================================================
+   Screenshot carousel — real device screenshots already include the status
+   bar / Dynamic Island, so the frame is a plain bezel only (no drawn notch).
+   ========================================================================== */
+.app-detail-grid{
+  display: grid; grid-template-columns: 240px 1fr; gap: 44px; align-items: center;
+}
+@media (max-width: 700px){ .app-detail-grid{ grid-template-columns: 1fr; } }
+
+.screens-desc{ font-size: 16px; line-height: 1.6; color: var(--ink); max-width: 52ch; margin: 0 0 14px; }
+
+.app-heading{ display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.app-heading img{ width: 32px; height: 32px; border-radius: 9px; }
+.app-heading h2{ font-family: var(--font-display); font-size: 26px; font-weight: 800; margin: 0; }
+.status-line{
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: 12.5px; font-weight: 600;
+  color: var(--ink); margin-bottom: 18px;
+}
+.status-line::before{
+  content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--ink);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse{ 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.3;transform:scale(1.3);} }
+.stack-line{ font-size: 14.5px; color: var(--mute); margin: 0; }
+.stack-line b{ color: var(--ink); font-weight: 700; }
+
+.phone{
+  position: relative; width: 100%; max-width: 230px; margin: 0 auto;
+  aspect-ratio: 1320 / 2868; border-radius: 44px;
+  background: #0B0B0E; padding: 8px;
+  box-shadow: 0 24px 50px -18px rgba(0,0,0,0.55);
+}
+.phone-screen{
+  position: relative; width: 100%; height: 100%; border-radius: 36px;
+  overflow: hidden; background: #000; touch-action: pan-y;
+}
+.phone-track{ display: flex; height: 100%; will-change: transform; }
+.phone-track img{ width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; user-select: none; -webkit-user-drag: none; }
+.dots{ display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 16px; }
+.dot{
+  width: 7px; height: 7px; border-radius: 50%; border: none; padding: 0;
+  background: rgba(246,243,255,0.25); cursor: pointer; transition: all .2s ease;
+}
+.dot.active{ background: var(--ink); width: 20px; border-radius: 5px; }
+
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.footer{ padding: 40px 0 72px; font-size: 13.5px; color: var(--mute-soft); }
