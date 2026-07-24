@@ -135,6 +135,7 @@ img{ max-width: 100%; display: block; }
   position: relative; width: 100%; height: 100%; border-radius: 36px;
   overflow: hidden; background: #000; touch-action: pan-y;
   contain: paint;
+  clip-path: inset(0 round 36px);
 }
 .phone-track{ display: flex; height: 100%; }
 .phone-track img{ width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; user-select: none; -webkit-user-drag: none; }
