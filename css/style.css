@@ -134,8 +134,9 @@ img{ max-width: 100%; display: block; }
 .phone-screen{
   position: relative; width: 100%; height: 100%; border-radius: 36px;
   overflow: hidden; background: #000; touch-action: pan-y;
+  contain: paint;
 }
-.phone-track{ display: flex; height: 100%; will-change: transform; }
+.phone-track{ display: flex; height: 100%; }
 .phone-track img{ width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; user-select: none; -webkit-user-drag: none; }
 .dots{ display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 16px; }
 .dot{
@@ -149,29 +150,3 @@ img{ max-width: 100%; display: block; }
    Footer
    ========================================================================== */
 .footer{ padding-top: 40px; padding-bottom: 72px; font-size: 13.5px; color: var(--mute-soft); }
-
-
-/* ==========================================================================
-   Mobile fixes
-   ========================================================================== */
-
-/* Fix 1: WebKit clipping bug — overflow:hidden + border-radius fails to
-   clip a child that has a CSS transform (the carousel track does, via
-   translateX). Affects Safari and all iOS browsers — Chrome, Firefox, etc.
-   on iPhone/iPad all use WebKit's renderer under the hood. */
-.phone-screen{
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
-  mask-image: radial-gradient(white, black);
-}
-
-/* Fix 2: Grid's default min-content sizing can force columns (and the
-   whole page) wider than the viewport on narrow screens. */
-.app-detail-grid > *{ min-width: 0; }
-
-/* Fix 3: collapse phone + description to one column earlier on narrow
-   screens, and stop any element from ever forcing horizontal scroll. */
-@media (max-width: 780px){
-  .app-detail-grid{ grid-template-columns: 1fr; gap: 24px; }
-  .phone{ max-width: 210px; margin: 0 auto; }
-}
-html, body{ overflow-x: hidden; width: 100%; }
