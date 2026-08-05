@@ -1,0 +1,14 @@
+<svg viewBox="0 0 1320 2868" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3A2510"/>
+      <stop offset="100%" stop-color="#8A5A1E"/>
+    </linearGradient>
+  </defs>
+  <rect width="1320" height="2868" fill="url(#bg1)"/>
+  <rect x="80" y="1180" width="1160" height="508" rx="48" fill="none" stroke="#F1FBFA" stroke-opacity="0.25" stroke-width="6" stroke-dasharray="18 16"/>
+  <circle cx="660" cy="1330" r="70" fill="none" stroke="#F1FBFA" stroke-opacity="0.55" stroke-width="8"/>
+  <path d="M 630 1330 L 655 1355 L 695 1305" fill="none" stroke="#F1FBFA" stroke-opacity="0.7" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="660" y="1470" font-family="-apple-system, 'SF Pro Display', sans-serif" font-size="52" font-weight="700" fill="#F1FBFA" text-anchor="middle">Home</text>
+  <text x="660" y="1540" font-family="-apple-system, 'SF Pro Text', sans-serif" font-size="34" fill="#F1FBFA" fill-opacity="0.55" text-anchor="middle">Screenshot coming soon</text>
+</svg>
